@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2,
+    "name": "Anti-Phishing Guard",
+    "version": "1.0",
+    "description": "Protects against phishing attacks by analyzing URLs in real-time.",
+    "icons": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    },
+    "permissions": [
+      "activeTab",
+      "storage",
+      "webRequest",
+      "webRequestBlocking",
+      "<all_urls>"
+    ],
+    "background": {
+      "scripts": ["lib/phishing-detector.js", "background.js"],
+      "persistent": true
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "browser_action": {
+      "default_popup": "popup/popup.html",
+      "default_icon": {
+        "48": "icons/icon-48.png",
+        "96": "icons/icon-96.png"
+      }
+    },
+    "options_ui": {
+      "page": "options/options.html",
+      "open_in_tab": true
+    }
+  }
+  
